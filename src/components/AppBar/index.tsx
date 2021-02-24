@@ -6,14 +6,21 @@ import { SettingOutlined } from "@ant-design/icons";
 import { Settings } from "../Settings";
 import { LABELS } from "../../constants";
 import { ConnectButton } from "../ConnectButton";
+import { AddNewButton } from "../AddNewButton";
+// import AddNewPost from "../Other/add-new-post";
+// import { useAccount } from "../../contexts/accounts";
 
 export const AppBar = (props: { left?: JSX.Element; right?: JSX.Element }) => {
   const { connected } = useWallet();
+  // const { useAccount } = useAccount();
 
   const TopBar = (
     <div className="App-Bar-right">
+      {connected ? ( <AddNewButton /> ) : null}
       {connected ? (
-        <CurrentUserBadge />
+        <div>
+          <CurrentUserBadge />
+        </div>
       ) : (
         <ConnectButton
           type="text"

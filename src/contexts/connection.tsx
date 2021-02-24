@@ -36,6 +36,7 @@ const DEFAULT_SLIPPAGE = 0.25;
 interface ConnectionConfig {
   connection: Connection;
   sendConnection: Connection;
+  sendTransaction: Connection,
   endpoint: string;
   slippage: number;
   setSlippage: (val: number) => void;
@@ -52,6 +53,7 @@ const ConnectionContext = React.createContext<ConnectionConfig>({
   setSlippage: (val: number) => {},
   connection: new Connection(DEFAULT, "recent"),
   sendConnection: new Connection(DEFAULT, "recent"),
+  sendTransaction: new Connection(DEFAULT, "recent"),
   env: ENDPOINTS[0].name,
   tokens: [],
   tokenMap: new Map<string, KnownToken>(),
@@ -74,6 +76,10 @@ export function ConnectionProvider({ children = undefined as any }) {
   const sendConnection = useMemo(() => new Connection(endpoint, "recent"), [
     endpoint,
   ]);
+  const sendTransaction = useMemo(() => new Connection(endpoint, "recent"), [
+    endpoint,
+  ]);
+
 
   const env =
     ENDPOINTS.find((end) => end.endpoint === endpoint)?.name ||
@@ -148,6 +154,7 @@ export function ConnectionProvider({ children = undefined as any }) {
         setSlippage: (val) => setSlippage(val.toString()),
         connection,
         sendConnection,
+        sendTransaction,
         tokens,
         tokenMap,
         env,
@@ -164,6 +171,10 @@ export function useConnection() {
 
 export function useSendConnection() {
   return useContext(ConnectionContext)?.sendConnection;
+}
+
+export function useSendTransaction() {
+  return useContext(ConnectionContext)?.sendTransaction;
 }
 
 export function useConnectionConfig() {

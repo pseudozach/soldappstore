@@ -5,17 +5,19 @@ import { Link } from "react-router-dom";
 
 import { LABELS } from "../../constants";
 import { AppBar } from "../AppBar";
-
 const { Header, Content } = Layout;
+
+// import { Container, Flex, Spinner, VStack } from "@chakra-ui/core";
 
 export const AppLayout = React.memo((props: any) => {
   return (
     <div className="App wormhole-bg">
-      <Layout title={LABELS.APP_TITLE}>
+      <Layout>
         <Header className="App-Bar">
           <Link to="/">
-            <div className="app-title">
-              <h2>Solana DAPP</h2>
+            <div className="app-title" style={{display: "flex", alignItems: "center"}}>
+              <img src="icon.png" style={{width: 32}}/>
+              <h2>Solana Dapp Store</h2>
             </div>
           </Link>
           <AppBar />

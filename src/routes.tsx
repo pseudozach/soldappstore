@@ -8,6 +8,11 @@ import { AppLayout } from "./components/Layout";
 
 import { FaucetView, HomeView } from "./views";
 
+// <Route exact path="/" component={() => <HomeView />} />
+// <Route exact path="/:slug?" render={(props: any) => (<HomeView {...props}/>)} />
+
+// <HashRouter basename={"/"}>
+
 export function Routes() {
   return (
     <>
@@ -18,7 +23,7 @@ export function Routes() {
               <MarketProvider>
                 <AppLayout>
                   <Switch>
-                    <Route exact path="/" component={() => <HomeView />} />
+                    <Route path="/:slug?" component={HomeView} />
                     <Route exact path="/faucet" children={<FaucetView />} />
                   </Switch>
                 </AppLayout>

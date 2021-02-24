@@ -1,6 +1,6 @@
 {
-  "name": "DApp Starter",
-  "short_name": "DApp Starter",
+  "name": "Solana Dapp Store",
+  "short_name": "Dapp Store",
   "display": "standalone",
   "start_url": "./",
   "theme_color": "#002140",
