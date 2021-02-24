@@ -24,6 +24,8 @@ import { useAccount } from "../contexts/accounts";
 // ff wallet address: 5UKn68ZUEnvdJUzY1WAMTEFsJXNS1L9mL94CgfgRbHn1
 const ffwalletpubkey = new PublicKey("5UKn68ZUEnvdJUzY1WAMTEFsJXNS1L9mL94CgfgRbHn1");
 const paymentSize = 1000000;
+const devnetprogramid = "9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89";
+const testnetprogramid = "Fzw6Ug36A9j3ctvaPCe3yimGEruty48Szs9TbShbUVDw";
 
 export function ensureSplAccount(
   instructions: TransactionInstruction[],
@@ -210,9 +212,9 @@ const greetedAccountDataLayout = BufferLayout.struct([
 export const addDappPubkey = async (env: string, wallet: WalletAdapter | undefined, publicKey: PublicKey, connection: Connection) => {
   let programId = new PublicKey("9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89");
   if(env == "devnet"){
-    programId = new PublicKey("9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89");
+    programId = new PublicKey(devnetprogramid);
   } else if (env == "tesnet"){
-    programId = new PublicKey("9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89");
+    programId = new PublicKey(testnetprogramid);
   } else if (env == "mainnet-beta"){
     programId = new PublicKey("9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89");
   }
@@ -304,9 +306,9 @@ export const addVotes = async (env: string, dappPubkey: PublicKey, wallet: Walle
   // devnet hello programid = 9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89
   let programId = new PublicKey("9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89");
   if(env == "devnet"){
-    programId = new PublicKey("9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89");
+    programId = new PublicKey(devnetprogramid);
   } else if (env == "tesnet"){
-    programId = new PublicKey("9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89");
+    programId = new PublicKey(testnetprogramid);
   } else if (env == "mainnet-beta"){
     programId = new PublicKey("9HwErV9wfuLpr7GnXSREh1fF226wiWpB2eBXZQg4sR89");
   }
