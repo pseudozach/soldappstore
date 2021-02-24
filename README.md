@@ -1,4 +1,5 @@
 # 🏗 Solana App Scaffold -> Solana Dapp Store
+
 Scaffolding for a dapp built on Solana
 
 # Quickstart
